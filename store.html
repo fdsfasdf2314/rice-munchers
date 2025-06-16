@@ -1,0 +1,849 @@
+```html
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rice Munchers - Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        'light-bg': '#FFFFFF',
+                        'dark-bg': '#181818'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .hero-gradient {
+            background: linear-gradient(135deg, #5D5CDE 0%, #8B87FF 100%);
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .dark .card-hover:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-light-bg dark:bg-dark-bg text-gray-900 dark:text-white transition-colors duration-300">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md z-50 border-b border-gray-200 dark:border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <h1 class="text-xl font-bold text-primary">Rice Munchers</h1>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="index.html#home" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">Home</a>
+                        <a href="index.html#about-band" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">About Band</a>
+                        <a href="index.html#about-us" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">About Us</a>
+                        <a href="index.html#songs" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">Songs</a>
+                        <a href="store.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">Store</a>
+                        <button id="cart-button" class="relative px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">
+                            🛒 Cart (<span id="cart-count">0</span>)
+                        </button>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button type="button" class="mobile-menu-button bg-gray-200 dark:bg-gray-700 inline-flex items-center justify-center p-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-primary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary">
+                        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                            <path class="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            <path class="close-icon hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="mobile-menu hidden md:hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+                <a href="index.html#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">Home</a>
+                <a href="index.html#about-band" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">About Band</a>
+                <a href="index.html#about-us" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">About Us</a>
+                <a href="index.html#songs" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">Songs</a>
+                <a href="store.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">Store</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Store Section -->
+    <section id="store" class="py-20 pt-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-6">Official Store</h2>
+                <div class="w-24 h-1 bg-primary mx-auto mb-8"></div>
+                <p class="text-xl text-gray-600 dark:text-gray-300">Get your Rice Munchers merchandise</p>
+            </div>
+
+            <!-- Filter Section -->
+            <div class="mb-12 flex flex-col md:flex-row gap-6">
+                <div class="flex-1">
+                    <label class="block text-sm font-medium mb-2">Category</label>
+                    <select id="category-filter" class="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 bg-white dark:bg-gray-700 text-base">
+                        <option value="all">All</option>
+                        <option value="tshirts">T-Shirts</option>
+                        <option value="caps">Caps</option>
+                        <option value="accessories">Accessories</option>
+                        <option value="hoodies">Hoodies</option>
+                    </select>
+                </div>
+                <div class="flex-1">
+                    <label class="block text-sm font-medium mb-2">Price Range</label>
+                    <select id="price-filter" class="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 bg-white dark:bg-gray-700 text-base">
+                        <option value="all">All</option>
+                        <option value="0-10">£0 - £10</option>
+                        <option value="10-20">£10 - £20</option>
+                        <option value="20-30">£20 - £30</option>
+                        <option value="30-40">£30 - £40</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div id="products-grid" class="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+                <!-- Product 1: Men's T-Shirt -->
+                <div class="card-hover bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg product-item" data-category="tshirts" data-price="20">
+                    <div class="h-48 bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
+                        <img src="mens-tshirt.png" alt="Men's T-Shirt" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="hidden w-full h-full bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center">
+                            <img src="mens-tshirt.png" alt="Men's T-Shirt" class="w-32 h-32 object-contain">
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2">Men's T-Shirt</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Premium cotton tee for men</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold text-primary">£20</span>
+                            <button class="bg-primary text-white px-4 py-2 rounded-full text-sm hover:bg-purple-600 transition-colors">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2: Women's T-Shirt -->
+                <div class="card-hover bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg product-item" data-category="tshirts" data-price="20">
+                    <div class="h-48 bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
+                        <img src="womens-tshirt.png" alt="Women's T-Shirt" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="hidden w-full h-full bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center">
+                            <img src="womens-tshirt.png" alt="Women's T-Shirt" class="w-32 h-32 object-contain">
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2">Women's T-Shirt</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Fitted cotton tee for women</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold text-primary">£20</span>
+                            <button class="bg-primary text-white px-4 py-2 rounded-full text-sm hover:bg-purple-600 transition-colors">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3: Children's/Teenagers' T-Shirt -->
+                <div class="card-hover bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg product-item" data-category="tshirts" data-price="16">
+                    <div class="h-48 bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
+                        <img src="kids-tshirt.png" alt="Kids' T-Shirt" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="hidden w-full h-full bg-gradient-to-br from-green-500 to-teal-600 flex items-center justify-center">
+                            <img src="kids-tshirt.png" alt="Kids' T-Shirt" class="w-32 h-32 object-contain">
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2">Kids' T-Shirt</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Soft tee for kids and teens</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold text-primary">£16</span>
+                            <button class="bg-primary text-white px-4 py-2 rounded-full text-sm hover:bg-purple-600 transition-colors">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4: Men's Cap -->
+                <div class="card-hover bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg product-item" data-category="caps" data-price="24">
+                    <div class="h-48 bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
+                        <img src="mens-cap.png" alt="Men's Cap" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="hidden w-full h-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center">
+                            <img src="mens-cap.png" alt="Men's Cap" class="w-32 h-32 object-contain">
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2">Men's Cap</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Embroidered cap, one size</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold text-primary">£24</span>
+                            <button class="bg-primary text-white px-4 py-2 rounded-full text-sm hover:bg-purple-600 transition-colors">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5: Women's Cap -->
+                <div class="card-hover bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg product-item" data-category="caps" data-price="24">
+                    <div class="h-48 bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
+                        <img src="womens-cap.png" alt="Women's Cap" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="hidden w-full h-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center">
+                            <img src="womens-cap.png" alt="Women's Cap" class="w-32 h-32 object-contain">
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2">Women's Cap</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Stylish cap, one size</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold text-primary">£24</span>
+                            <button class="bg-primary text-white px-4 py-2 rounded-full text-sm hover:bg-purple-600 transition-colors">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6: Teenagers' Cap -->
+                <div class="card-hover bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg product-item" data-category="caps" data-price="20">
+                    <div class="h-48 bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
+                        <img src="teens-cap.png" alt="Teens' Cap" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="hidden w-full h-full bg-gradient-to-br from-yellow-500 to-orange-600 flex items-center justify-center">
+                            <img src="teens-cap.png" alt="Teens' Cap" class="w-32 h-32 object-contain">
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2">Teens' Cap</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Cool cap for teens, one size</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold text-primary">£20</span>
+                            <button class="bg-primary text-white px-4 py-2 rounded-full text-sm hover:bg-purple-600 transition-colors">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 7: Children's/Toddlers' Cap -->
+                <div class="card-hover bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg product-item" data-category="caps" data-price="16">
+                    <div class="h-48 bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
+                        <img src="kids-cap.png" alt="Kids' Cap" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="hidden w-full h-full bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center">
+                            <img src="kids-cap.png" alt="Kids' Cap" class="w-32 h-32 object-contain">
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2">Kids' Cap</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Cute cap for kids, one size</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold text-primary">£16</span>
+                            <button class="bg-primary text-white px-4 py-2 rounded-full text-sm hover:bg-purple-600 transition-colors">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 8: Mug -->
+                <div class="card-hover bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg product-item" data-category="accessories" data-price="12">
+                    <div class="h-48 bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
+                        <img src="mug.png" alt="Mug" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="hidden w-full h-full bg-gradient-to-br from-teal-500 to-green-600 flex items-center justify-center">
+                            <img src="mug.png" alt="Mug" class="w-32 h-32 object-contain">
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2">Mug</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Ceramic mug with logo</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold text-primary">£12</span>
+                            <button class="bg-primary text-white px-4 py-2 rounded-full text-sm hover:bg-purple-600 transition-colors">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 9: Pen -->
+                <div class="card-hover bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg product-item" data-category="accessories" data-price="4">
+                    <div class="h-48 bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
+                        <img src="pen.png" alt="Pen" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="hidden w-full h-full bg-gradient-to-br from-indigo-500 to-blue-600 flex items-center justify-center">
+                            <img src="pen.png" alt="Pen" class="w-32 h-32 object-contain">
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2">Pen</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Branded ballpoint pen</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold text-primary">£4</span>
+                            <button class="bg-primary text-white px-4 py-2 rounded-full text-sm hover:bg-purple-600 transition-colors">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 10: Unisex Hoodie -->
+                <div class="card-hover bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg product-item" data-category="hoodies" data-price="32">
+                    <div class="h-48 bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
+                        <img src="hoodie.png" alt="Unisex Hoodie" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="hidden w-full h-full bg-gradient-to-br from-red-500 to-orange-600 flex items-center justify-center">
+                            <img src="hoodie.png" alt="Unisex Hoodie" class="w-32 h-32 object-contain">
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2">Unisex Hoodie</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Cozy hoodie for all ages</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold text-primary">£32/£24</span>
+                            <button class="bg-primary text-white px-4 py-2 rounded-full text-sm hover:bg-purple-600 transition-colors">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Modal -->
+    <div id="product-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-[60] flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-6">
+                    <h2 id="modal-title" class="text-2xl font-bold">Product Details</h2>
+                    <button id="close-modal" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 text-2xl">×</button>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div id="modal-image" class="h-64 bg-gray-100 dark:bg-gray-700 rounded-xl flex items-center justify-center overflow-hidden">
+                        <img id="modal-img" src="mens-tshirt.png" alt="Product Image" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div id="modal-fallback" class="hidden w-full h-full bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center">
+                            <img src="mens-tshirt.png" alt="Product Image" class="w-32 h-32 object-contain">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div id="modal-price" class="text-3xl font-bold text-primary mb-4">£20</div>
+                        <div id="modal-description" class="text-gray-600 dark:text-gray-300 mb-6">
+                            High-quality cotton t-shirt for men featuring the iconic Rice Munchers logo.
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div id="size-container">
+                                <label class="block text-sm font-medium mb-2">Size</label>
+                                <select id="size-select" class="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 bg-white dark:bg-gray-700 text-base">
+                                    <option>S</option>
+                                    <option>M</option>
+                                    <option>L</option>
+                                    <option>XL</option>
+                                    <option>XXL</option>
+                                </select>
+                            </div>
+                            
+                            <div id="color-container">
+                                <label class="block text-sm font-medium mb-2">Color</label>
+                                <select id="color-select" class="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 bg-white dark:bg-gray-700 text-base">
+                                    <option>Black</option>
+                                    <option>White</option>
+                                    <option>Navy</option>
+                                    <option>Purple</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Quantity</label>
+                                <div class="flex items-center space-x-3">
+                                    <button id="quantity-minus" class="bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 w-8 h-8 rounded-full flex items-center justify-center hover:bg-gray-300 dark:hover:bg-gray-500">-</button>
+                                    <span id="quantity-display" class="text-xl font-semibold w-8 text-center">1</span>
+                                    <button id="quantity-plus" class="bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 w-8 h-8 rounded-full flex items-center justify-center hover:bg-gray-300 dark:hover:bg-gray-500">+</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button id="add-to-cart" class="w-full bg-primary text-white py-3 rounded-full font-semibold hover:bg-purple-600 transition-colors mt-6 text-base">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-[60] flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-6">
+                    <h2 class="text-2xl font-bold">Shopping Cart</h2>
+                    <button id="close-cart" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 text-2xl">×</button>
+                </div>
+                
+                <div id="cart-items" class="space-y-4 mb-6">
+                    <!-- Cart items will be dynamically inserted here -->
+                </div>
+                
+                <div id="empty-cart" class="text-center py-8 text-gray-500 dark:text-gray-400 hidden">
+                    Your cart is empty
+                </div>
+                
+                <div id="cart-total" class="border-t border-gray-200 dark:border-gray-600 pt-4 hidden">
+                    <div class="flex justify-between items-center text-xl font-bold mb-4">
+                        <span>Total: £<span id="total-amount">0</span></span>
+                    </div>
+                    <button class="w-full bg-primary text-white py-3 rounded-full font-semibold hover:bg-purple-600 transition-colors text-base">
+                        Proceed to Checkout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 dark:bg-black text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <h3 class="text-2xl font-bold mb-4 text-primary">Rice Munchers</h3>
+                    <p class="text-gray-300 mb-4">
+                        Creating music that nourishes the soul. Follow us on our journey and stay tuned for upcoming releases and live performances.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">Facebook</a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">Instagram</a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">Twitter</a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">Spotify</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html#about-band" class="text-gray-400 hover:text-primary transition-colors">About Band</a></li>
+                        <li><a href="index.html#about-us" class="text-gray-400 hover:text-primary transition-colors">About Us</a></li>
+                        <li><a href="index.html#songs" class="text-gray-400 hover:text-primary transition-colors">Songs</a></li>
+                        <li><a href="store.html" class="text-gray-400 hover:text-primary transition-colors">Store</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact</h4>
+                    <p class="text-gray-400 mb-2">booking@ricemunchers.com</p>
+                    <p class="text-gray-400 mb-2">info@ricemunchers.com</p>
+                    <p class="text-gray-400">+1 (555) 123-4567</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400">© 2025 Rice Munchers. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dark mode detection
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+
+        // Shopping cart functionality
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let currentProduct = null;
+        let quantity = 1;
+
+        // Product data
+        const products = {
+            'Men\'s T-Shirt': {
+                name: 'Men\'s T-Shirt',
+                price: 20,
+                image: 'mens-tshirt.png',
+                gradient: 'from-primary to-purple-600',
+                description: 'High-quality cotton t-shirt for men featuring the iconic Rice Munchers logo. Available in multiple sizes and colours.',
+                hasVariants: true,
+                sizes: ['S', 'M', 'L', 'XL', 'XXL']
+            },
+            'Women\'s T-Shirt': {
+                name: 'Women\'s T-Shirt',
+                price: 20,
+                image: 'womens-tshirt.png',
+                gradient: 'from-purple-500 to-pink-600',
+                description: 'Fitted cotton t-shirt for women with the Rice Munchers logo. Available in multiple sizes and colours.',
+                hasVariants: true,
+                sizes: ['S', 'M', 'L', 'XL', 'XXL']
+            },
+            'Kids\' T-Shirt': {
+                name: 'Kids\' T-Shirt',
+                price: 16,
+                image: 'kids-tshirt.png',
+                gradient: 'from-green-500 to-teal-600',
+                description: 'Soft and durable t-shirt for children and teenagers. Available in sizes from newborn to age 15.',
+                hasVariants: true,
+                sizes: ['Newborn', '2', '4', '6', '8', '10', '12', '14', '15']
+            },
+            'Men\'s Cap': {
+                name: 'Men\'s Cap',
+                price: 24,
+                image: 'mens-cap.png',
+                gradient: 'from-orange-500 to-red-600',
+                description: 'Embroidered cap for men with adjustable snapback closure. One size fits most.',
+                hasVariants: false
+            },
+            'Women\'s Cap': {
+                name: 'Women\'s Cap',
+                price: 24,
+                image: 'womens-cap.png',
+                gradient: 'from-blue-500 to-indigo-600',
+                description: 'Stylish embroidered cap for women with adjustable closure. One size fits most.',
+                hasVariants: false
+            },
+            'Teens\' Cap': {
+                name: 'Teens\' Cap',
+                price: 20,
+                image: 'teens-cap.png',
+                gradient: 'from-yellow-500 to-orange-600',
+                description: 'Cool cap for teenagers with the Rice Munchers logo. One size fits most.',
+                hasVariants: false
+            },
+            'Kids\' Cap': {
+                name: 'Kids\' Cap',
+                price: 16,
+                image: 'kids-cap.png',
+                gradient: 'from-pink-500 to-purple-600',
+                description: 'Cute embroidered cap for children and toddlers. One size fits most.',
+                hasVariants: false
+            },
+            'Mug': {
+                name: 'Mug',
+                price: 12,
+                image: 'mug.png',
+                gradient: 'from-teal-500 to-green-600',
+                description: 'Ceramic mug featuring the Rice Munchers logo. Perfect for coffee or tea.',
+                hasVariants: false
+            },
+            'Pen': {
+                name: 'Pen',
+                price: 4,
+                image: 'pen.png',
+                gradient: 'from-indigo-500 to-blue-600',
+                description: 'Branded ballpoint pen with the Rice Munchers logo. Smooth writing experience.',
+                hasVariants: false
+            },
+            'Unisex Hoodie': {
+                name: 'Unisex Hoodie',
+                price: 32, // Default adult price, updated dynamically for kids
+                image: 'hoodie.png',
+                gradient: 'from-red-500 to-orange-600',
+                description: 'Cozy unisex hoodie available for men, women, and kids. Select size category and specific size.',
+                hasVariants: true,
+                sizes: ['Men\'s S', 'Men\'s M', 'Men\'s L', 'Men\'s XL', 'Men\'s XXL', 'Women\'s S', 'Women\'s M', 'Women\'s L', 'Women\'s XL', 'Women\'s XXL', 'Kids Newborn', 'Kids 2', 'Kids 4', 'Kids 6', 'Kids 8', 'Kids 10', 'Kids 12', 'Kids 14', 'Kids 15']
+            }
+        };
+
+        // Save cart to localStorage
+        function saveCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        // Update cart count display
+        function updateCartCount() {
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cart-count').textContent = count;
+        }
+
+        // Update cart total
+        function updateCartTotal() {
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            document.getElementById('total-amount').textContent = total.toFixed(2);
+        }
+
+        // Open product modal
+        function openProductModal(productName) {
+            currentProduct = products[productName];
+            const modal = document.getElementById('product-modal');
+            
+            // Update modal content
+            document.getElementById('modal-title').textContent = currentProduct.name;
+            let price = currentProduct.price;
+            if (currentProduct.name === 'Unisex Hoodie') {
+                price = 32; // Default adult price
+            }
+            document.getElementById('modal-price').textContent = `£${price}`;
+            document.getElementById('modal-description').textContent = currentProduct.description;
+            
+            // Update image
+            const modalImg = document.getElementById('modal-img');
+            const modalFallback = document.getElementById('modal-fallback');
+            
+            modalImg.src = currentProduct.image;
+            modalImg.alt = currentProduct.name;
+            modalImg.style.display = 'block';
+            modalFallback.style.display = 'none';
+            
+            // Update fallback
+            modalFallback.className = `hidden w-full h-full bg-gradient-to-br ${currentProduct.gradient} flex items-center justify-center`;
+            modalFallback.innerHTML = `<img src="${currentProduct.image}" alt="${currentProduct.name}" class="w-32 h-32 object-contain">`;
+            
+            // Show/hide variant options
+            const sizeContainer = document.getElementById('size-container');
+            const colorContainer = document.getElementById('color-container');
+            
+            if (currentProduct.hasVariants) {
+                sizeContainer.style.display = 'block';
+                colorContainer.style.display = 'block';
+                
+                // Populate size options
+                const sizeSelect = document.getElementById('size-select');
+                sizeSelect.innerHTML = '';
+                currentProduct.sizes.forEach(size => {
+                    const option = document.createElement('option');
+                    option.value = size;
+                    option.textContent = size;
+                    sizeSelect.appendChild(option);
+                });
+                
+                // Update price for kids' hoodie dynamically
+                if (currentProduct.name === 'Unisex Hoodie') {
+                    sizeSelect.addEventListener('change', function() {
+                        const selectedSize = this.value;
+                        if (selectedSize.startsWith('Kids')) {
+                            document.getElementById('modal-price').textContent = '£24';
+                            currentProduct.price = 24;
+                        } else {
+                            document.getElementById('modal-price').textContent = '£32';
+                            currentProduct.price = 32;
+                        }
+                    });
+                }
+            } else {
+                sizeContainer.style.display = 'none';
+                colorContainer.style.display = 'none';
+            }
+            
+            // Reset quantity
+            quantity = 1;
+            document.getElementById('quantity-display').textContent = quantity;
+            
+            modal.classList.remove('hidden');
+        }
+
+        // Close product modal
+        function closeProductModal() {
+            document.getElementById('product-modal').classList.add('hidden');
+        }
+
+        // Update quantity
+        function updateQuantity(change) {
+            quantity = Math.max(1, quantity + change);
+            document.getElementById('quantity-display').textContent = quantity;
+        }
+
+        // Add item to cart
+        function addToCart() {
+            if (!currentProduct) return;
+            
+            const size = currentProduct.hasVariants ? document.getElementById('size-select').value : null;
+            const color = currentProduct.hasVariants ? document.getElementById('color-select').value : null;
+            
+            const cartItem = {
+                id: Date.now(),
+                name: currentProduct.name,
+                price: currentProduct.price,
+                quantity: quantity,
+                size: size,
+                color: color,
+                image: currentProduct.image
+            };
+            
+            cart.push(cartItem);
+            saveCart();
+            updateCartCount();
+            closeProductModal();
+            
+            // Show success message
+            showSuccessMessage();
+        }
+
+        // Show success message
+        function showSuccessMessage() {
+            const message = document.createElement('div');
+            message.className = 'fixed top-20 right-4 bg-green-500 text-white px-4 py-2 rounded-lg z-[70] transform translate-x-full';
+            message.textContent = 'Added to cart!';
+            document.body.appendChild(message);
+            
+            // Animate in
+            setTimeout(() => {
+                message.style.transform = 'translateX(0)';
+                message.style.transition = 'transform 0.3s ease';
+            }, 100);
+            
+            // Remove after 2 seconds
+            setTimeout(() => {
+                message.style.transform = 'translateX(full)';
+                setTimeout(() => message.remove(), 300);
+            }, 2000);
+        }
+
+        // Open cart modal
+        function openCartModal() {
+            const modal = document.getElementById('cart-modal');
+            const cartItems = document.getElementById('cart-items');
+            const emptyCart = document.getElementById('empty-cart');
+            const cartTotal = document.getElementById('cart-total');
+            
+            // Clear current cart display
+            cartItems.innerHTML = '';
+            
+            if (cart.length === 0) {
+                emptyCart.classList.remove('hidden');
+                cartTotal.classList.add('hidden');
+            } else {
+                emptyCart.classList.add('hidden');
+                cartTotal.classList.remove('hidden');
+                
+                // Display cart items
+                cart.forEach((item, index) => {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700 rounded-lg';
+                    
+                    itemDiv.innerHTML = `
+                        <div class="flex items-center space-x-4">
+                            <img src="${item.image}" alt="${item.name}" class="w-10 h-10 object-contain">
+                            <div>
+                                <div class="font-semibold">${item.name}</div>
+                                ${item.size ? `<div class="text-sm text-gray-600 dark:text-gray-400">Size: ${item.size}${item.color ? `, Color: ${item.color}` : ''}</div>` : ''}
+                                <div class="text-sm text-gray-600 dark:text-gray-400">£${item.price} each</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <button onclick="updateCartItemQuantity(${index}, -1)" class="bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 w-8 h-8 rounded-full flex items-center justify-center hover:bg-gray-300 dark:hover:bg-gray-500">-</button>
+                            <span class="font-semibold w-8 text-center">${item.quantity}</span>
+                            <button onclick="updateCartItemQuantity(${index}, 1)" class="bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 w-8 h-8 rounded-full flex items-center justify-center hover:bg-gray-300 dark:hover:bg-gray-500">+</button>
+                            <button onclick="removeCartItem(${index})" class="text-red-500 hover:text-red-700 ml-2">🗑️</button>
+                        </div>
+                    `;
+                    
+                    cartItems.appendChild(itemDiv);
+                });
+                
+                updateCartTotal();
+            }
+            
+            modal.classList.remove('hidden');
+        }
+
+        // Close cart modal
+        function closeCartModal() {
+            document.getElementById('cart-modal').classList.add('hidden');
+        }
+
+        // Update cart item quantity
+        function updateCartItemQuantity(index, change) {
+            cart[index].quantity = Math.max(1, cart[index].quantity + change);
+            saveCart();
+            updateCartCount();
+            openCartModal();
+        }
+
+        // Remove cart item
+        function removeCartItem(index) {
+            cart.splice(index, 1);
+            saveCart();
+            updateCartCount();
+            openCartModal();
+        }
+
+        // Filter products
+        function filterProducts() {
+            const category = document.getElementById('category-filter').value;
+            const priceRange = document.getElementById('price-filter').value;
+            const products = document.querySelectorAll('.product-item');
+
+            products.forEach(product => {
+                const productCategory = product.getAttribute('data-category');
+                const productPrice = parseFloat(product.getAttribute('data-price'));
+
+                let showByCategory = category === 'all' || productCategory === category;
+                let showByPrice = true;
+
+                if (priceRange !== 'all') {
+                    const [min, max] = priceRange.split('-').map(Number);
+                    showByPrice = productPrice >= min && productPrice <= max;
+                }
+
+                if (showByCategory && showByPrice) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        }
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.querySelector('.mobile-menu-button');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const menuIcon = document.querySelector('.menu-icon');
+        const closeIcon = document.querySelector('.close-icon');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            menuIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        });
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Buy Now buttons
+            document.querySelectorAll('button').forEach(button => {
+                if (button.textContent === 'Buy Now') {
+                    button.addEventListener('click', function() {
+                        const productCard = this.closest('.card-hover');
+                        const productName = productCard.querySelector('h3').textContent;
+                        openProductModal(productName);
+                    });
+                }
+            });
+
+            // Modal event listeners
+            document.getElementById('close-modal').addEventListener('click', closeProductModal);
+            document.getElementById('close-cart').addEventListener('click', closeCartModal);
+            document.getElementById('cart-button').addEventListener('click', openCartModal);
+            document.getElementById('add-to-cart').addEventListener('click', addToCart);
+            document.getElementById('quantity-minus').addEventListener('click', () => updateQuantity(-1));
+            document.getElementById('quantity-plus').addEventListener('click', () => updateQuantity(1));
+
+            // Filter event listeners
+            document.getElementById('category-filter').addEventListener('change', filterProducts);
+            document.getElementById('price-filter').addEventListener('change', filterProducts);
+
+            // Close modals when clicking outside
+            document.getElementById('product-modal').addEventListener('click', function(e) {
+                if (e.target === this) closeProductModal();
+            });
+            document.getElementById('cart-modal').addEventListener('click', function(e) {
+                if (e.target === this) closeCartModal();
+            });
+
+            // Initialize cart count
+            updateCartCount();
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe section
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
+```
