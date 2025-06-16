@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rice Munchers - Official Band Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        'light-bg': '#FFFFFF',
+                        'dark-bg': '#181818'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .hero-gradient {
+            background: linear-gradient(135deg, #5D5CDE 0%, #8B87FF 100%);
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .dark .card-hover:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-light-bg dark:bg-dark-bg text-gray-900 dark:text-white transition-colors duration-300">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md z-50 border-b border-gray-200 dark:border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <h1 class="text-xl font-bold text-primary">Rice Munchers</h1>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#home" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">Home</a>
+                        <a href="#about-band" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">About Band</a>
+                        <a href="#about-us" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">About Us</a>
+                        <a href="#songs" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">Songs</a>
+                        <a href="#store" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">Store</a>
+                        <button id="cart-button" class="relative px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">
+                            🛒 Cart (<span id="cart-count">0</span>)
+                        </button>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button type="button" class="mobile-menu-button bg-gray-200 dark:bg-gray-700 inline-flex items-center justify-center p-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-primary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary">
+                        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                            <path class="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            <path class="close-icon hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="mobile-menu hidden md:hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">Home</a>
+                <a href="#about-band" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">About Band</a>
+                <a href="#about-us" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">About Us</a>
+                <a href="#songs" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">Songs</a>
+                <a href="#store" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">Store</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-gradient min-h-screen flex items-center justify-center text-white">
+        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 animate-fade-in">Rice Munchers</h1>
+            <p class="text-xl sm:text-2xl mb-8 opacity-90">Where rhythm meets flavor</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#songs" class="bg-white text-primary px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors text-base">Listen Now</a>
+                <a href="#about-band" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-primary transition-colors text-base">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About the Band Section -->
+    <section id="about-band" class="py-20 bg-gray-50 dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-6">About Rice Munchers</h2>
+                <div class="w-24 h-1 bg-primary mx-auto mb-8"></div>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6">Our Story</h3>
+                    <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
+                        Rice Munchers emerged from a shared passion for music and an unlikely love for rice-based cuisine. What started as jam sessions in Ethem's garage quickly evolved into something extraordinary when the three of us discovered our unique sound.
+                    </p>
+                    <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
+                        Our music blends contemporary beats with traditional influences, creating a sound that's both familiar and refreshingly new. We believe music, like good food, brings people together and creates lasting memories.
+                    </p>
+                    <div class="grid grid-cols-3 gap-4 text-center">
+                        <div>
+                            <div class="text-3xl font-bold text-primary">50+</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">Original Songs</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold text-primary">25+</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">Live Shows</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold text-primary">3</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">Albums</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-primary to-purple-600 rounded-2xl p-8 text-white">
+                    <h4 class="text-2xl font-semibold mb-4">Our Mission</h4>
+                    <p class="text-lg opacity-90 mb-6">
+                        To create music that nourishes the soul, just like a perfectly prepared bowl of rice nourishes the body. We aim to bring joy, comfort, and connection through our unique sound.
+                    </p>
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <div class="w-2 h-2 bg-white rounded-full mr-3"></div>
+                            <span>Authentic musical expression</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-2 h-2 bg-white rounded-full mr-3"></div>
+                            <span>Community through music</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-2 h-2 bg-white rounded-full mr-3"></div>
+                            <span>Innovation in sound</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about-us" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-6">Meet the Band</h2>
+                <div class="w-24 h-1 bg-primary mx-auto mb-8"></div>
+                <p class="text-xl text-gray-600 dark:text-gray-300">The talented individuals behind Rice Munchers</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Ethem Beldagli -->
+                <div class="card-hover bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg">
+                    <div class="w-32 h-32 bg-gradient-to-br from-primary to-purple-600 rounded-full mx-auto mb-6 flex items-center justify-center">
+                        <span class="text-white text-4xl font-bold">EB</span>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-center mb-2">Ethem Beldagli</h3>
+                    <p class="text-primary text-center mb-4 font-medium">Lead Vocals & Guitar</p>
+                    <p class="text-gray-600 dark:text-gray-300 text-center mb-6">
+                        The creative force behind our lyrics and melodies. Ethem's passion for storytelling through music gives Rice Munchers its distinctive voice.
+                    </p>
+                    <div class="text-center">
+                        <div class="inline-flex space-x-2">
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Songwriter</span>
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Producer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Aarav Jajoo -->
+                <div class="card-hover bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg">
+                    <div class="w-32 h-32 bg-gradient-to-br from-primary to-purple-600 rounded-full mx-auto mb-6 flex items-center justify-center">
+                        <span class="text-white text-4xl font-bold">AJ</span>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-center mb-2">Aarav Jajoo</h3>
+                    <p class="text-primary text-center mb-4 font-medium">Bass & Backing Vocals</p>
+                    <p class="text-gray-600 dark:text-gray-300 text-center mb-6">
+                        The rhythmic foundation of our sound. Aarav's bass lines and harmonies provide the groove that keeps our audience moving.
+                    </p>
+                    <div class="text-center">
+                        <div class="inline-flex space-x-2">
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Bassist</span>
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Arranger</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kayden Wong -->
+                <div class="card-hover bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg">
+                    <div class="w-32 h-32 bg-gradient-to-br from-primary to-purple-600 rounded-full mx-auto mb-6 flex items-center justify-center">
+                        <span class="text-white text-4xl font-bold">KW</span>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-center mb-2">Kayden Wong</h3>
+                    <p class="text-primary text-center mb-4 font-medium">Drums & Percussion</p>
+                    <p class="text-gray-600 dark:text-gray-300 text-center mb-6">
+                        The heartbeat of Rice Munchers. Kayden's dynamic drumming and percussion work drives our energy and brings our songs to life.
+                    </p>
+                    <div class="text-center">
+                        <div class="inline-flex space-x-2">
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Drummer</span>
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Composer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Songs Section -->
+    <section id="songs" class="py-20 bg-gray-50 dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-6">Our Music</h2>
+                <div class="w-24 h-1 bg-primary mx-auto mb-8"></div>
+                <p class="text-xl text-gray-600 dark:text-gray-300">Discover our latest tracks and favorite hits</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Song 1 -->
+                <div class="card-hover bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg">
+                    <div class="h-48 bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M18 3a1 1 0 00-1.196-.98l-10 2A1 1 0 006 5v9.114A4.369 4.369 0 005 14c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V7.82l8-1.6v5.894A4.37 4.37 0 0015 12c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V3z"/>
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Grain of Truth</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Our breakout single that started it all</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">3:45</span>
+                            <button class="bg-primary text-white px-4 py-2 rounded-full text-sm hover:bg-purple-600 transition-colors">Play</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Song 2 -->
+                <div class="card-hover bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg">
+                    <div class="h-48 bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M18 3a1 1 0 00-1.196-.98l-10 2A1 1 0 006 5v9.114A4.369 4.369 0 005 14c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V7.82l8-1.6v5.894A4.37 4.37 0 0015 12c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V3z"/>
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Steamed Dreams</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">A dreamy ballad about aspirations</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">4:12</span>
+                            <button class="bg-primary text-white px-4 py-2 rounded-full text-sm hover:bg-purple-600 transition-colors">Play</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Song 3 -->
+                <div class="card-hover bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg">
+                    <div class="h-48 bg-gradient-to-br from-green-500 to-teal-600 flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M18 3a1 1 0 00-1.196-.98l-10 2A1 1 0 006 5v9.114A4.369 4.369 0 005 14c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V7.82l8-1.6v5.894A4.37 4.37 0 0015 12c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V3z"/>
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Jasmine Nights</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">An upbeat anthem for summer evenings</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">3:28</span>
+                            <button class="bg-primary text-white px-4 py-2 rounded-full text-sm hover:bg-purple-600 transition-colors">Play</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Song 4 -->
+                <div class="card-hover bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg">
+                    <div class="h-48 bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M18 3a1 1 0 00-1.196-.98l-10 2A1 1 0 006 5v9.114A4.369 4.369 0 005 14c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V7.82l8-1.6v5.894A4.37 4.37 0 0015 12c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V3z"/>
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Wok This Way</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">A funky fusion of rhythm and flavor</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">3:55</span>
+                            <button class="bg-primary text-white px-4 py-2 rounded-full text-sm hover:bg-purple-600 transition-colors">Play</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Song 5 -->
+                <div class="card-hover bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg">
+                    <div class="h-48 bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M18 3a1 1 0 00-1.196-.98l-10 2A1 1 0 006 5v9.114A4.369 4.369 0 005 14c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V7.82l8-1.6v5.894A4.37 4.37 0 0015 12c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V3z"/>
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Midnight Munch</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Late night vibes and contemplation</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">5:03</span>
+                            <button class="bg-primary text-white px-4 py-2 rounded-full text-sm hover:bg-purple-600 transition-colors">Play</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Song 6 -->
+                <div class="card-hover bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg">
+                    <div class="h-48 bg-gradient-to-br from-yellow-500 to-orange-600 flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M18 3a1 1 0 00-1.196-.98l-10 2A1 1 0 006 5v9.114A4.369 4.369 0 005 14c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V7.82l8-1.6v5.894A4.37 4.37 0 0015 12c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V3z"/>
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Bowl of Soul</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Our most personal and emotional track</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">4:31</span>
+                            <button class="bg-primary text-white px-4 py-2 rounded-full text-sm hover:bg-purple-600 transition-colors">Play</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Store Section -->
+    <section id="store" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-6">Official Store</h2>
+                <div class="w-24 h-1 bg-primary mx-auto mb-8"></div>
+                <p class="text-xl text-gray-600 dark:text-gray-300">Get your Rice Munchers merchandise and music</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+                <!-- Product 1 -->
+                <div class="card-hover bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg">
+                    <div class="h-48 bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
+                        <img src="1.png" alt="Band T-Shirt" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="hidden w-full h-full bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center">
+                            <span class="text-white text-4xl">👕</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2">Band T-Shirt</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Premium cotton tee with our logo</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold text-primary">$25</span>
+                            <button class="bg-primary text-white px-4 py-2 rounded-full text-sm hover:bg-purple-600 transition-colors">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="card-hover bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg">
+                    <div class="h-48 bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
+                        <img src="2.png" alt="Latest Album" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="hidden w-full h-full bg-gradient-to-br from-green-500 to-teal-600 flex items-center justify-center">
+                            <span class="text-white text-4xl">🎵</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2">Latest Album</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">"Flavors of Sound" - Digital Download</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold text-primary">$15</span>
+                            <button class="bg-primary text-white px-4 py-2 rounded-full text-sm hover:bg-purple-600 transition-colors">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="card-hover bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg">
+                    <div class="h-48 bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
+                        <img src="3.png" alt="Snapback Hat" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="hidden w-full h-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center">
+                            <span class="text-white text-4xl">🧢</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2">Snapback Hat</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Embroidered Rice Munchers cap</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold text-primary">$30</span>
+                            <button class="bg-primary text-white px-4 py-2 rounded-full text-sm hover:bg-purple-600 transition-colors">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="card-hover bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg">
+                    <div class="h-48 bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
+                        <img src="4.png" alt="Signed Poster" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="hidden w-full h-full bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center">
+                            <span class="text-white text-4xl">🎤</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2">Signed Poster</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Limited edition signed by all members</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold text-primary">$20</span>
+                            <button class="bg-primary text-white px-4 py-2 rounded-full text-sm hover:bg-purple-600 transition-colors">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="card-hover bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg">
+                    <div class="h-48 bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
+                        <img src="5.png" alt="Vinyl Record" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="hidden w-full h-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center">
+                            <span class="text-white text-4xl">💿</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2">Vinyl Record</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Limited edition vinyl of our greatest hits</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold text-primary">$35</span>
+                            <button class="bg-primary text-white px-4 py-2 rounded-full text-sm hover:bg-purple-600 transition-colors">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="#" class="bg-primary text-white px-8 py-3 rounded-full font-semibold hover:bg-purple-600 transition-colors text-base inline-block">Visit Full Store</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Modal -->
+    <div id="product-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-[60] flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-6">
+                    <h2 id="modal-title" class="text-2xl font-bold">Product Details</h2>
+                    <button id="close-modal" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 text-2xl">×</button>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div id="modal-image" class="h-64 bg-gray-100 dark:bg-gray-700 rounded-xl flex items-center justify-center overflow-hidden">
+                        <img id="modal-img" src="1.png" alt="Product Image" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div id="modal-fallback" class="hidden w-full h-full bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center">
+                            <span class="text-white text-6xl">👕</span>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div id="modal-price" class="text-3xl font-bold text-primary mb-4">$25</div>
+                        <div id="modal-description" class="text-gray-600 dark:text-gray-300 mb-6">
+                            High-quality 100% cotton t-shirt featuring the iconic Rice Munchers logo. Available in multiple sizes and colors.
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Size</label>
+                                <select id="size-select" class="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 bg-white dark:bg-gray-700 text-base">
+                                    <option>S</option>
+                                    <option>M</option>
+                                    <option>L</option>
+                                    <option>XL</option>
+                                    <option>XXL</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Color</label>
+                                <select id="color-select" class="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 bg-white dark:bg-gray-700 text-base">
+                                    <option>Black</option>
+                                    <option>White</option>
+                                    <option>Navy</option>
+                                    <option>Purple</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Quantity</label>
+                                <div class="flex items-center space-x-3">
+                                    <button id="quantity-minus" class="bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 w-8 h-8 rounded-full flex items-center justify-center hover:bg-gray-300 dark:hover:bg-gray-500">-</button>
+                                    <span id="quantity-display" class="text-xl font-semibold w-8 text-center">1</span>
+                                    <button id="quantity-plus" class="bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 w-8 h-8 rounded-full flex items-center justify-center hover:bg-gray-300 dark:hover:bg-gray-500">+</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button id="add-to-cart" class="w-full bg-primary text-white py-3 rounded-full font-semibold hover:bg-purple-600 transition-colors mt-6 text-base">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-[60] flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-6">
+                    <h2 class="text-2xl font-bold">Shopping Cart</h2>
+                    <button id="close-cart" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 text-2xl">×</button>
+                </div>
+                
+                <div id="cart-items" class="space-y-4 mb-6">
+                    <!-- Cart items will be dynamically inserted here -->
+                </div>
+                
+                <div id="empty-cart" class="text-center py-8 text-gray-500 dark:text-gray-400 hidden">
+                    Your cart is empty
+                </div>
+                
+                <div id="cart-total" class="border-t border-gray-200 dark:border-gray-600 pt-4 hidden">
+                    <div class="flex justify-between items-center text-xl font-bold mb-4">
+                        <span>Total: $<span id="total-amount">0</span></span>
+                    </div>
+                    <button class="w-full bg-primary text-white py-3 rounded-full font-semibold hover:bg-purple-600 transition-colors text-base">
+                        Proceed to Checkout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 dark:bg-black text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <h3 class="text-2xl font-bold mb-4 text-primary">Rice Munchers</h3>
+                    <p class="text-gray-300 mb-4">
+                        Creating music that nourishes the soul. Follow us on our journey and stay tuned for upcoming releases and live performances.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">Facebook</a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">Instagram</a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">Twitter</a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">Spotify</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#about-band" class="text-gray-400 hover:text-primary transition-colors">About Band</a></li>
+                        <li><a href="#about-us" class="text-gray-400 hover:text-primary transition-colors">About Us</a></li>
+                        <li><a href="#songs" class="text-gray-400 hover:text-primary transition-colors">Songs</a></li>
+                        <li><a href="#store" class="text-gray-400 hover:text-primary transition-colors">Store</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact</h4>
+                    <p class="text-gray-400 mb-2">booking@ricemunchers.com</p>
+                    <p class="text-gray-400 mb-2">info@ricemunchers.com</p>
+                    <p class="text-gray-400">+1 (555) 123-4567</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2024 Rice Munchers. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dark mode detection
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+
+        // Shopping cart functionality
+        let cart = [];
+        let currentProduct = null;
+        let quantity = 1;
+
+        // Product data
+        const products = {
+            'Band T-Shirt': {
+                name: 'Band T-Shirt',
+                price: 25,
+                emoji: '👕',
+                image: '1.png',
+                gradient: 'from-primary to-purple-600',
+                description: 'High-quality 100% cotton t-shirt featuring the iconic Rice Munchers logo. Available in multiple sizes and colors.',
+                hasVariants: true
+            },
+            'Latest Album': {
+                name: 'Latest Album',
+                price: 15,
+                emoji: '🎵',
+                image: '2.png',
+                gradient: 'from-green-500 to-teal-600',
+                description: '"Flavors of Sound" - Digital Download. Our complete latest album with 12 tracks including all your favorites.',
+                hasVariants: false
+            },
+            'Snapback Hat': {
+                name: 'Snapback Hat',
+                price: 30,
+                emoji: '🧢',
+                image: '3.png',
+                gradient: 'from-orange-500 to-red-600',
+                description: 'Embroidered Rice Munchers cap with adjustable snapback closure. One size fits most.',
+                hasVariants: true
+            },
+            'Signed Poster': {
+                name: 'Signed Poster',
+                price: 20,
+                emoji: '🎤',
+                image: '4.png',
+                gradient: 'from-purple-500 to-pink-600',
+                description: 'Limited edition 18"x24" poster signed by all three band members. Perfect for any music lover\'s wall.',
+                hasVariants: false
+            },
+            'Vinyl Record': {
+                name: 'Vinyl Record',
+                price: 35,
+                emoji: '💿',
+                image: '5.png',
+                gradient: 'from-blue-500 to-indigo-600',
+                description: 'Limited edition vinyl record featuring our greatest hits collection. High-quality pressing for audiophiles.',
+                hasVariants: false
+            }
+        };
+
+        // Update cart count display
+        function updateCartCount() {
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cart-count').textContent = count;
+        }
+
+        // Update cart total
+        function updateCartTotal() {
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            document.getElementById('total-amount').textContent = total.toFixed(2);
+        }
+
+        // Open product modal
+        function openProductModal(productName) {
+            currentProduct = products[productName];
+            const modal = document.getElementById('product-modal');
+            
+            // Update modal content
+            document.getElementById('modal-title').textContent = currentProduct.name;
+            document.getElementById('modal-price').textContent = `$${currentProduct.price}`;
+            document.getElementById('modal-description').textContent = currentProduct.description;
+            
+            // Update image
+            const modalImg = document.getElementById('modal-img');
+            const modalFallback = document.getElementById('modal-fallback');
+            
+            modalImg.src = currentProduct.image;
+            modalImg.alt = currentProduct.name;
+            modalImg.style.display = 'block';
+            modalFallback.style.display = 'none';
+            
+            // Update fallback
+            modalFallback.className = `hidden w-full h-full bg-gradient-to-br ${currentProduct.gradient} flex items-center justify-center`;
+            modalFallback.innerHTML = `<span class="text-white text-6xl">${currentProduct.emoji}</span>`;
+            
+            // Show/hide variant options
+            const sizeSelect = document.getElementById('size-select').parentElement;
+            const colorSelect = document.getElementById('color-select').parentElement;
+            
+            if (currentProduct.hasVariants) {
+                sizeSelect.style.display = 'block';
+                colorSelect.style.display = 'block';
+            } else {
+                sizeSelect.style.display = 'none';
+                colorSelect.style.display = 'none';
+            }
+            
+            // Reset quantity
+            quantity = 1;
+            document.getElementById('quantity-display').textContent = quantity;
+            
+            modal.classList.remove('hidden');
+        }
+
+        // Close product modal
+        function closeProductModal() {
+            document.getElementById('product-modal').classList.add('hidden');
+        }
+
+        // Update quantity
+        function updateQuantity(change) {
+            quantity = Math.max(1, quantity + change);
+            document.getElementById('quantity-display').textContent = quantity;
+        }
+
+        // Add item to cart
+        function addToCart() {
+            if (!currentProduct) return;
+            
+            const size = currentProduct.hasVariants ? document.getElementById('size-select').value : null;
+            const color = currentProduct.hasVariants ? document.getElementById('color-select').value : null;
+            
+            const cartItem = {
+                id: Date.now(),
+                name: currentProduct.name,
+                price: currentProduct.price,
+                quantity: quantity,
+                size: size,
+                color: color,
+                emoji: currentProduct.emoji
+            };
+            
+            cart.push(cartItem);
+            updateCartCount();
+            closeProductModal();
+            
+            // Show success message
+            showSuccessMessage();
+        }
+
+        // Show success message
+        function showSuccessMessage() {
+            const message = document.createElement('div');
+            message.className = 'fixed top-20 right-4 bg-green-500 text-white px-4 py-2 rounded-lg z-[70] transform translate-x-full';
+            message.textContent = 'Added to cart!';
+            document.body.appendChild(message);
+            
+            // Animate in
+            setTimeout(() => {
+                message.style.transform = 'translateX(0)';
+                message.style.transition = 'transform 0.3s ease';
+            }, 100);
+            
+            // Remove after 2 seconds
+            setTimeout(() => {
+                message.style.transform = 'translateX(full)';
+                setTimeout(() => message.remove(), 300);
+            }, 2000);
+        }
+
+        // Open cart modal
+        function openCartModal() {
+            const modal = document.getElementById('cart-modal');
+            const cartItems = document.getElementById('cart-items');
+            const emptyCart = document.getElementById('empty-cart');
+            const cartTotal = document.getElementById('cart-total');
+            
+            // Clear current cart display
+            cartItems.innerHTML = '';
+            
+            if (cart.length === 0) {
+                emptyCart.classList.remove('hidden');
+                cartTotal.classList.add('hidden');
+            } else {
+                emptyCart.classList.add('hidden');
+                cartTotal.classList.remove('hidden');
+                
+                // Display cart items
+                cart.forEach((item, index) => {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700 rounded-lg';
+                    
+                    itemDiv.innerHTML = `
+                        <div class="flex items-center space-x-4">
+                            <span class="text-2xl">${item.emoji}</span>
+                            <div>
+                                <div class="font-semibold">${item.name}</div>
+                                ${item.size ? `<div class="text-sm text-gray-600 dark:text-gray-400">Size: ${item.size}${item.color ? `, Color: ${item.color}` : ''}</div>` : ''}
+                                <div class="text-sm text-gray-600 dark:text-gray-400">$${item.price} each</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <button onclick="updateCartItemQuantity(${index}, -1)" class="bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 w-8 h-8 rounded-full flex items-center justify-center hover:bg-gray-300 dark:hover:bg-gray-500">-</button>
+                            <span class="font-semibold w-8 text-center">${item.quantity}</span>
+                            <button onclick="updateCartItemQuantity(${index}, 1)" class="bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 w-8 h-8 rounded-full flex items-center justify-center hover:bg-gray-300 dark:hover:bg-gray-500">+</button>
+                            <button onclick="removeCartItem(${index})" class="text-red-500 hover:text-red-700 ml-2">🗑️</button>
+                        </div>
+                    `;
+                    
+                    cartItems.appendChild(itemDiv);
+                });
+                
+                updateCartTotal();
+            }
+            
+            modal.classList.remove('hidden');
+        }
+
+        // Close cart modal
+        function closeCartModal() {
+            document.getElementById('cart-modal').classList.add('hidden');
+        }
+
+        // Update cart item quantity
+        function updateCartItemQuantity(index, change) {
+            cart[index].quantity = Math.max(1, cart[index].quantity + change);
+            updateCartCount();
+            openCartModal(); // Refresh the display
+        }
+
+        // Remove cart item
+        function removeCartItem(index) {
+            cart.splice(index, 1);
+            updateCartCount();
+            openCartModal(); // Refresh the display
+        }
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.querySelector('.mobile-menu-button');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const menuIcon = document.querySelector('.menu-icon');
+        const closeIcon = document.querySelector('.close-icon');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            menuIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        });
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Buy Now buttons
+            document.querySelectorAll('button').forEach(button => {
+                if (button.textContent === 'Buy Now') {
+                    button.addEventListener('click', function() {
+                        const productCard = this.closest('.card-hover');
+                        const productName = productCard.querySelector('h3').textContent;
+                        openProductModal(productName);
+                    });
+                }
+            });
+
+            // Play buttons
+            document.querySelectorAll('button').forEach(button => {
+                if (button.textContent === 'Play') {
+                    button.addEventListener('click', function() {
+                        // Simulate play functionality
+                        this.textContent = 'Playing...';
+                        this.classList.add('bg-green-500');
+                        this.classList.remove('bg-primary');
+                        
+                        setTimeout(() => {
+                            this.textContent = 'Play';
+                            this.classList.remove('bg-green-500');
+                            this.classList.add('bg-primary');
+                        }, 2000);
+                    });
+                }
+            });
+
+            // Modal event listeners
+            document.getElementById('close-modal').addEventListener('click', closeProductModal);
+            document.getElementById('close-cart').addEventListener('click', closeCartModal);
+            document.getElementById('cart-button').addEventListener('click', openCartModal);
+            document.getElementById('add-to-cart').addEventListener('click', addToCart);
+            document.getElementById('quantity-minus').addEventListener('click', () => updateQuantity(-1));
+            document.getElementById('quantity-plus').addEventListener('click', () => updateQuantity(1));
+
+            // Close modals when clicking outside
+            document.getElementById('product-modal').addEventListener('click', function(e) {
+                if (e.target === this) closeProductModal();
+            });
+            document.getElementById('cart-modal').addEventListener('click', function(e) {
+                if (e.target === this) closeCartModal();
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        menuIcon.classList.remove('hidden');
+                        closeIcon.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+
+        // Hero section should be visible immediately
+        document.querySelector('#home').style.opacity = '1';
+        document.querySelector('#home').style.transform = 'translateY(0)';
+    </script>
+</body>
+</html>
